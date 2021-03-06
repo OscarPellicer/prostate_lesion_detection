@@ -1,0 +1,12 @@
+batchgenerators==0.20.1
+nms-extension==0.0.0
+pandas==0.25.3
+Pillow<7.1
+RoIAlign-extension-2D==0.0.0
+RoIAlign-extension-3D==0.0.0
+SimpleITK==1.2.4
+tensorboard==2.2.0
+torch==1.4.0
+torchvision==0.5.0
+tqdm
+

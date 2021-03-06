@@ -1,0 +1,3 @@
+#Add your compute capability for e.g. P100 to the global variable
+#https://developer.nvidia.com/cuda-gpus
+export TORCH_CUDA_ARCH_LIST="6.0"
