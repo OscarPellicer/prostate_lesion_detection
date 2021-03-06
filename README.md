@@ -55,25 +55,35 @@ unzip ./MDT_ProstateX/experiments/exp0/test/*.zip -d ./MDT_ProstateX/experiments
 
 Up to this point, you will be able to run any of the provided Jupyter Notebooks, but you will not be able to use the [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) for training or inference, as you still need to install the packages required by it as well. To do so, it might worth looking at the documentation of the original toolkit at [Readme](./MDT_ProstateX/Readme.md). In summary, you will need to do two things:
 
-First, you need to go to https://developer.nvidia.com/cuda-gpus, look at the Compute Capability of your Nvidia GPU, and create an environmental variable with the version, such as: 
+First, you need to go to https://developer.nvidia.com/cuda-gpus, look at the Compute Capability of your Nvidia GPU, and create an environmental variable with the latest version that your GPU supports, such as: 
 ```bash
 export TORCH_CUDA_ARCH_LIST="6.1;7.5"
 ```
 
-Then, using the same shell, got to the `MDT_ProstateX` folder, and run the setup script to install the required libraries:
+Then, using the same shell, go to the `MDT_ProstateX` folder, and run the `setup.py` script to install the required libraries:
 ```bash
 cd MDT_ProstateX
 python setup.py install
 ```
 
 ## Usage
-All the provided Jupyter Notebooks can be run wihtout actually using the Deep Learning model.
+All the provided Jupyter Notebooks can be run without actually using the installing the  [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) requirements.
 
-To use the provided model for inference on new data, you will have to first preprocess your images identicaly to how the ProstateX images have been processed using [ProstateX preprocessing](ProstateX%20preprocessing.ipynb). Then, replace the IDs in the `test` key of the `ss_v2` dictionary at the beginning of the file `./MDT_ProstateX/experiments/exp0/data_loader.py` for your own IDs. Finally, run the model in inference mode and aggragate the results:
+To use the provided model for inference on new data, you will have to first preprocess your images identicaly to how the ProstateX images have been processed using [ProstateX preprocessing](ProstateX%20preprocessing.ipynb). Then, replace the IDs in the `test` key of the `ss_v2` dictionary at the beginning of the file `./MDT_ProstateX/experiments/exp0/data_loader.py` by your own IDs. Finally, run the model in inference mode and aggragate the results:
+
+```bash
+%run exec.py --mode test --exp_source experiments/exp0 --exp_dir experiments/exp0
+%run exec.py --mode analysis --exp_source experiments/exp0 --exp_dir experiments/exp0
+```
+
+To use the [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) for training, please create a directory within the `MDT_ProstateX/experiments` directory containing a copy of the files: `configs.py`, `custom_transform.py`, and `data_loader.py` from the provided experiment `MDT_ProstateX/experiments/exp0`. These files will have to be modified to fit your needs, or, at the very least, the dictionary `ss_v2` dictionary at the beginning of the file `data_loader.py` should be modified to include your own IDs. Then, to run the model and produce the predictions on your test set:
 
 ```bash
 %run exec.py --mode train_test --exp_source experiments/exp0 --exp_dir experiments/exp0
 %run exec.py --mode analysis --exp_source experiments/exp0 --exp_dir experiments/exp0
 ```
 
-To use the [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) for training, please create a directory within the `MDT_ProstateX/experiments` directory containing a copy of the files: `configs.py`, `custom_transform.py`, and `data_loader.py`. These files will have to be modified to fit your needs, or, at the very least, the dictionary `ss_v2` dictionary at the beginning of the file `data_loader.py` should be modified to include your own IDs.
+Either if you use the model for inference or training on your data, you will be able to analyze the results by using the [Result analysis](./MDT_ProstateX/Result%20analysis.ipynb) Notebook.
+
+## Contact
+If you have any problems, please check further instructions in each of the provided Notebooks, create a new Issue, or directly email me at Oscar.Pellicer at uv.es
