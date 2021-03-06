@@ -7,9 +7,9 @@ Please, cite the paper if you use any of the code in this repository:
 ```
 TO DO
 ```
-<figcaption>This is an example of the output of the model:
+This is an example of the output of the model:
 ![Model output](./media/model_output.png "Model output")
-Output of the model evaluated on three ProstateX test patients. First image from the left shows the GT on the T2 mpMRI sequence; the rest show the output predictions of the model on different sequences (from left to right: T2, b800, ADC, Ktrans). GGG0 (benign) detections are not shown and only the highest-scoring detection is shown for highly overlapped detections (IoU > 0.25). Detections with a confidence below the lesion-wise maximum sensitivity setting (t=0.028) are also ignored.</figcaption>
+<figcaption>Output of the model evaluated on three ProstateX test patients. First image from the left shows the GT on the T2 mpMRI sequence; the rest show the output predictions of the model on different sequences (from left to right: T2, b800, ADC, Ktrans). GGG0 (benign) detections are not shown and only the highest-scoring detection is shown for highly overlapped detections (IoU > 0.25). Detections with a confidence below the lesion-wise maximum sensitivity setting (t=0.028) are also ignored.</figcaption>
 
 ## Overview
 This repository contains three main Jupyter Notebooks:
