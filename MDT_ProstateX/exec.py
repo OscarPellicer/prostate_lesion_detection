@@ -37,7 +37,7 @@ from predictor import Predictor
 from plotting import plot_batch_prediction
 import numpy as np
 
-from ipdb import launch_ipdb_on_exception
+#from ipdb import launch_ipdb_on_exception
 
 for msg in ["Attempting to set identical bottom==top results",
             "This figure includes Axes that are not compatible with tight_layout",

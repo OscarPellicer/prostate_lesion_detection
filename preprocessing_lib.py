@@ -212,7 +212,7 @@ def resampling_operation(img, mask, spacing=(0.5, 0.5, 3), size='auto',
 
         #Resample other channels differently
         if transform_channels != []:
-            #channel_tranform= sitk.CompositeTransform(3)
+#             channel_tranform = sitk.CompositeTransform([transform, per_channel_transform])
             channel_tranform = sitk.Transform(3, sitk.sitkComposite)
             channel_tranform.AddTransform(transform)
             channel_tranform.AddTransform(per_channel_transform)
@@ -304,10 +304,10 @@ def center_image(img, mask, size=(160,160,32), spacing=(1,1,3), center_around_ro
                     spacing_orig, size_orig, spacing, size)]
     else:
          #Get centroid
-        if ma.GetNumberOfComponentsPerPixel() > 1:
-            ma_centroid= sitk.VectorIndexSelectionCast(ma, 0) > 0.5
+        if mask.GetNumberOfComponentsPerPixel() > 1:
+            ma_centroid= sitk.VectorIndexSelectionCast(mask, 0) > 0.5
         else:
-            ma_centroid= ma > 0.5
+            ma_centroid= mask > 0.5
         label_analysis_filer= sitk.LabelShapeStatisticsImageFilter()
         label_analysis_filer.Execute(ma_centroid)
         centroid= label_analysis_filer.GetCentroid(1)
@@ -315,7 +315,8 @@ def center_image(img, mask, size=(160,160,32), spacing=(1,1,3), center_around_ro
         offset= np.array(centroid)-np.array(offset_correction)
                 
     translation = sitk.TranslationTransform(3, offset)
-    img, mask= resampling_operation(img, mask, spacing=spacing, **kwargs)
+    img, mask= resampling_operation(img, mask, spacing=spacing, size=size, 
+                                    transform=translation, **kwargs)
     
     return img, mask
 
@@ -600,7 +601,7 @@ def read_prostatex_all_modalities(images_path, ktrans_path, ID,
     for img_path in os.listdir(images_path):
         try:
             #We use a new dataset each time only to leverage its image-reading functionality
-            ds_ns= ImageDataset()
+            ds_ns= ImageList()
 
             #Load image info
             if verbose: print('\t- Reading: %s '%img_path, end='')        
@@ -671,7 +672,7 @@ def read_prostatex_all_modalities(images_path, ktrans_path, ID,
         mhd_path= glob.glob(os.path.join(ktrans_path,'*.mhd'))[0]
         print('\t- Reading: %s (%s) (%s)'%(os.path.split(mhd_path)[-1], 'Ktrans', 'ktrans'))
 
-        ds_ns= ImageDataset()
+        ds_ns= ImageList()
         ds_ns.add_image(mhd_path, ID)
         images['ktrans']= ds_ns.IMAGES
     except Exception as e:

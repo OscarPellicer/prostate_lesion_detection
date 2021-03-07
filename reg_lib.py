@@ -128,7 +128,7 @@ def register_spline(fixed_image, moving_image, fixed_image_mask=None, lr=200,
     # in the full resolution image we use a mesh that is four times the original size.
     registration_method.SetInitialTransformAsBSpline(initial_transform,
                                                      inPlace=True,
-                                                     scaleFactors=[1,scale])
+                                                     scaleFactors=[1,2])
     #registration_method.SetMetricAsMeanSquares()
     registration_method.SetMetricAsMattesMutualInformation(numberOfHistogramBins=100)
     # Settings for metric sampling, usage of a mask is optional. When given a mask the sample points will be 

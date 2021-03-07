@@ -54,7 +54,7 @@ class configs(DefaultConfigs):
         #########################
 
         #Already done!
-        self.root_dir = r'../../../'
+        self.root_dir = r'../'
         #self.raw_data_dir = os.path.join(self.root_dir, './')
         self.pp_dir = os.path.join(self.root_dir, 'out')
         self.target_spacing = (0.5, 0.5, 3.)

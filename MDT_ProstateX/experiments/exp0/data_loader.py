@@ -146,9 +146,9 @@ def get_test_generator(cf, logger):
         logger.warn('INFO: using train set for testing')
     elif cf.test_subset == 'val':
         pids= val_pids 
-        logger.warn('INFO: using validation set for testing')
+        logger.warn('INFO: using cross-validation set for testing')
     elif cf.test_subset == 'test':
-        pids= test_pids
+        pids= ss_v2['test']
         logger.warn('INFO: using test set for testing')
     else:
         raise ValueError('cf.test_subset must be either train, val or test')
