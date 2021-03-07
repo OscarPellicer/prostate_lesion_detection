@@ -95,8 +95,8 @@ python exec.py --mode analysis --exp_source experiments/exp0 --exp_dir experimen
 To use the [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) for training, please create a directory within the `MDT_ProstateX/experiments` directory containing a copy of the files: `configs.py`, `custom_transform.py`, and `data_loader.py` from the provided experiment `MDT_ProstateX/experiments/exp0`. These files will have to be modified to fit your needs, or, at the very least, the dictionary `ss_v2` dictionary at the beginning of the file `data_loader.py` should be modified to include your own IDs. Then, to run the model and produce the predictions on your test set:
 
 ```bash
-python exec.py --mode train_test --exp_source experiments/exp0 --exp_dir experiments/exp0
-python exec.py --mode analysis --exp_source experiments/exp0 --exp_dir experiments/exp0
+python exec.py --mode train_test --exp_source experiments/exp1 --exp_dir experiments/exp1
+python exec.py --mode analysis --exp_source experiments/exp1 --exp_dir experiments/exp1
 ```
 
 Either if you use the model for inference or training on your data, you will be able to analyze the results by using the [Result analysis](./MDT_ProstateX/Result%20analysis.ipynb) Notebook. You must remember to change the value of the variable `SUBSET` in this Notebook to point to the new predictions.
