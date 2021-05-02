@@ -1,5 +1,5 @@
 # Prostate mpMRI lesion detection system
-This repository contains the code for the paper [Deep Learning system for fully automatic detection, segmentation and Gleason Grade estimation of prostate cancer in multiparametric Magnetic Resonance Images](https://arxiv.org/abs/2103.12650) (currently in preprint), which proposes a fully automatic system that takes a prostate multi-parametric magnetic resonance images (mpMRIs) from a prostate cancer (PCa) suspect and, by leveraging the [Retina U-Net detection model](https://arxiv.org/abs/1811.08661), locates PCa lesions, segments them, and predicts their most likely Gleason grade group (GGG). 
+This repository contains the code for the paper [Deep Learning system for fully automatic detection, segmentation and Gleason Grade estimation of prostate cancer in multiparametric Magnetic Resonance Images](https://arxiv.org/abs/2103.12650) (currently in preprint), which proposes a fully automatic system that takes prostate multi-parametric magnetic resonance images (mpMRIs) from a prostate cancer (PCa) suspect and, by leveraging the [Retina U-Net detection model](https://arxiv.org/abs/1811.08661), locates PCa lesions, segments them, and predicts their most likely Gleason grade group (GGG). 
 
 This model has been adapated to only use [ProstateX data](https://wiki.cancerimagingarchive.net/display/Public/SPIE-AAPM-NCI+PROSTATEx+Challenges), achieving an AUC of 0.87 at the challenge online learderboard, hence tying up with the winner of the original [ProstateX challenge](https://doi.org/10.1117/1.jmi.5.4.044501).
 
@@ -59,9 +59,9 @@ unzip \*.zip -d ./
 unzip ./MDT_ProstateX/experiments/exp0/test/\*.zip -d ./MDT_ProstateX/experiments/exp0/test/
 ```
 
-At this point, you should be able to run all the provided Jupyter Notebooks, but you will not be able to use the [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) for training or inference yet, as you still need to install the packages required by it. (./MDT_ProstateX/README.md). In summary, you will need to do two things (make sure to run everything from within the `prostate_lesion` conda / pip environment). 
+At this point, you should be able to run all the provided Jupyter Notebooks, but you will not be able to use the [Medical Detection Toolkit](https://github.com/MIC-DKFZ/medicaldetectiontoolkit/tree/torch1x) for training or inference yet, as you still need to install the packages required by it. In summary, you will need to do two things (make sure to run everything from within the `prostate_lesion` conda / pip environment). 
 
-**Note**: If you have any doubts in this step, it might be worth looking at the original documentation of the toolkit ([README]), alhtough some things here differ slightly. For instance, here we use pytorch 1.7, instead of torch 1.4
+**Note**: If you have any doubts in this step, it might be worth looking at the original documentation of the toolkit ([README](./MDT_ProstateX/README.md)), alhtough some things here differ slightly. For instance, here we use pytorch 1.7, instead of torch 1.4
 
 First, install `pytorch`:
 ```bash
