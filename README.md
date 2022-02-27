@@ -3,8 +3,8 @@ This repository contains the code for the paper [Deep Learning system for fully 
 
 This model has been adapated to only use [ProstateX data](https://wiki.cancerimagingarchive.net/display/Public/SPIE-AAPM-NCI+PROSTATEx+Challenges), achieving an AUC of 0.87 at the challenge online learderboard, hence tying up with the winner of the original [ProstateX challenge](https://doi.org/10.1117/1.jmi.5.4.044501).
 
-Please, cite [the preprint paper](https://arxiv.org/abs/2103.12650) if you use any of the code in this repository:
->Oscar J. Pellicer-Valero, José L. Marenco Jiménez, Victor Gonzalez-Perez, Juan Luis Casanova Ramón-Borja, Isabel Martín García, María Barrios Benito, Paula Pelechano Gómez, José Rubio-Briones, María José Rupérez, José D. Martín-Guerrero, Deep Learning for fully automatic detection, segmentation, and Gleason Grade estimation of prostate cancer in multiparametric Magnetic Resonance Images. arXiv. March, 2021. http://arxiv.org/abs/2103.12650
+Please, cite [the peer-reviewed paper](https://www.nature.com/articles/s41598-022-06730-6) if you use any of the code in this repository:
+>Oscar J. Pellicer-Valero, José L. Marenco Jiménez, Victor Gonzalez-Perez, Juan Luis Casanova Ramón-Borja, Isabel Martín García, María Barrios Benito, Paula Pelechano Gómez, José Rubio-Briones, María José Rupérez, José D. Martín-Guerrero, Deep Learning for fully automatic detection, segmentation, and Gleason Grade estimation of prostate cancer in multiparametric Magnetic Resonance Images. Scientific Reports. February, 2022.
 
 This is an example of the output of the model:
 ![Model output](./media/model_output.png "Model output")
